@@ -1,0 +1,22 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "types": [],
+    "baseUrl": ".",
+    "paths": {
+      "ngx-crud-forms": [
+        "dist/ngx-crud-forms",
+        "../../dist/ngx-crud-forms"
+      ],
+      "ngx-crud-forms/*": [
+        "dist/ngx-crud-forms/*",
+        "../../dist/ngx-crud-forms"
+      ]
+    }
+  },
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts"
+  ]
+}

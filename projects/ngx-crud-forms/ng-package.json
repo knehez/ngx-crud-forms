@@ -1,0 +1,23 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/ngx-crud-forms",
+  "lib": {
+    "entryFile": "src/public_api.ts",
+    "styleIncludePaths": [
+      "node_modules/bootstrap/dist/css/bootstrap.css",
+      "node_modules/primeng/resources/themes/nova-light/theme.css",
+      "node_modules/primeng/resources/primeng.min.css",
+      "node_modules/primeicons/primeicons.css",
+      "node_modules/@ng-select/ng-select/themes/default.theme.css"
+    ]
+  },
+  "whitelistedNonPeerDependencies": [
+    "tslib",
+    "@ng-bootstrap/ng-bootstrap",
+    "@ng-select/ng-select",
+    "file-saver",
+    "moment",
+    "primeng",
+    "reflect-metadata"
+  ]
+}

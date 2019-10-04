@@ -1,0 +1,35 @@
+{
+  "name": "ngx-crud-forms",
+  "version": "0.0.1",
+  "description": "Angular 7 dynamic reactive forms",
+  "contributors": [
+    {
+      "name": "Dr. Károly Nehéz",
+      "email": "aitnehez@uni-miskolc.hu"
+    },
+    {
+      "name": "Áron Kiss",
+      "email": "aron123dev@gmail.com"
+    }
+  ],
+  "homepage": "https://github.com/knehez/ngx-crud-forms",
+  "repository": {
+    "type": "git",
+    "url": "github:knehez/ngx-crud-forms"
+  },
+  "bugs": {
+    "url": "https://github.com/knehez/ngx-crud-forms/issues"
+  },
+  "peerDependencies": {
+    "@angular/common": "^7.2.0",
+    "@angular/core": "^7.2.0"
+  },
+  "dependencies": {
+    "@ng-bootstrap/ng-bootstrap": "4.2.2",
+    "@ng-select/ng-select": "2.20.5",
+    "file-saver": "2.0.2",
+    "moment": "2.24.0",
+    "primeng": "8.0.3",
+    "reflect-metadata": "0.1.13"
+  }
+}
