@@ -8,7 +8,7 @@ import { saveAs } from 'file-saver';
   styleUrls: ['./modal-img.component.css']
 })
 export class ModalImgComponent implements OnInit {
-  @Input() imgDataB64: string;
+  @Input() imgDataB64: any;
 
   constructor(public activeModal: NgbActiveModal) { }
 
@@ -18,9 +18,9 @@ export class ModalImgComponent implements OnInit {
 
   ngOnInit() {
     if (this.imgDataB64 !== null && this.imgDataB64 !== undefined && this.imgDataB64 !== '') {
-      this.name = this.imgDataB64['name'];
-      this.type = this.resSplitter(this.imgDataB64['data'], 0);
-      this.extension = this.resSplitter(this.imgDataB64['data'], 1);
+      this.name = this.imgDataB64.name;
+      this.type = this.resSplitter(this.imgDataB64.data, 0);
+      this.extension = this.resSplitter(this.imgDataB64.data, 1);
     }
   }
 
