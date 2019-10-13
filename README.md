@@ -60,6 +60,13 @@ To deploy the package, do the following:
 
 The project is available on ``localhost:4200``, and recompiles itself when changes are made to the code.
 
+### Running tests
+To run the unit tests of the package, run the following command:
+
+```sh
+ng test ngx-crud-forms
+```
+
 ### Versioning and building
 To increment the version number, run:
 
