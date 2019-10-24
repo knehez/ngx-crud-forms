@@ -231,11 +231,11 @@ describe('CrudTableLibComponent', () => {
   });
 
   it('should open modal on click to Edit button on table row', (done) => {
-    spyOn(NgbModal.prototype, 'open');
+    const ngbModalSpy = spyOn(NgbModal.prototype, 'open');
     const editBtn = fixture.nativeElement.querySelector('.crud-table-row-edit-btn');
     editBtn.click();
     fixture.whenStable().then(() => {
-      expect(NgbModal.prototype.open).toHaveBeenCalled();
+      expect(ngbModalSpy).toHaveBeenCalled();
       done();
     });
   });

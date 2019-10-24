@@ -12,6 +12,7 @@ import { TextareaInput } from '../dynamic-form/form-elements/textArea';
 describe('ModalFormComponent', () => {
   let component: ModalFormComponent;
   let fixture: ComponentFixture<ModalFormComponent>;
+  let modalCloseSpy;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -37,7 +38,13 @@ describe('ModalFormComponent', () => {
     fixture = TestBed.createComponent(ModalFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    modalCloseSpy = spyOn(component.activeModal, 'close').and.callThrough();
   });
+
+  afterEach(() => {
+    modalCloseSpy.calls.reset();
+  })
 
   it('should create component', () => {
     expect(component).toBeTruthy();
@@ -56,7 +63,7 @@ describe('ModalFormComponent', () => {
     closeButton.click();
 
     fixture.whenStable().then(() => {
-      expect(component.activeModal.close).toHaveBeenCalledWith({ action: 'close' });
+      expect(modalCloseSpy).toHaveBeenCalledWith({ action: 'close' });
     });
   });
 
@@ -65,7 +72,7 @@ describe('ModalFormComponent', () => {
     deleteButton.click();
 
     fixture.whenStable().then(() => {
-      expect(component.activeModal.close).toHaveBeenCalledWith({ action: 'delete' });
+      expect(modalCloseSpy).toHaveBeenCalledWith({ action: 'delete', data: {} });
     });
   });
 
@@ -74,7 +81,7 @@ describe('ModalFormComponent', () => {
     editButton.click();
 
     fixture.whenStable().then(() => {
-      expect(component.activeModal.close).toHaveBeenCalledWith({ action: 'save' });
+      expect(modalCloseSpy).toHaveBeenCalledWith({ action: 'save', data: {} });
     });
   });
 
@@ -86,7 +93,7 @@ describe('ModalFormComponent', () => {
     saveButton.click();
 
     fixture.whenStable().then(() => {
-      expect(component.activeModal.close).toHaveBeenCalledWith({ action: 'save' });
+      expect(modalCloseSpy).toHaveBeenCalledWith({ action: 'save', data: {} });
     });
   });
 
