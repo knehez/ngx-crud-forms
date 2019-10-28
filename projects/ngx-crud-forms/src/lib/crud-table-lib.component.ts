@@ -238,6 +238,7 @@ export class CrudTableLibComponent implements OnInit {
     }
 
     this.models = models;
+    this.allEntities = this.models.length;
     this.convertDates();
     this.oneModel = null;
   }
