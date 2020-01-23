@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class GeneralRestService {
     public objectName = '';
 
-    private actionUrl = 'backend/';
+    actionUrl = 'backend/';
 
     constructor(protected _http: HttpClient) {
     }
@@ -40,7 +40,7 @@ export class GeneralRestService {
 
     file(obj) {
         return new Promise((resolve, reject) => {
-            this._http.post(`${this.actionUrl}${this.objectName}/file`, obj)
+            this._http.get(`${this.actionUrl}${this.objectName}/${obj.id}/file/${obj.fileName}`)
                 .subscribe(res => {
                     resolve(res);
                 }, (err) => {

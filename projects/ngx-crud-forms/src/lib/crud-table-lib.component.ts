@@ -161,8 +161,8 @@ export class CrudTableLibComponent implements OnInit {
     });
   }
 
-  async openModalImg(imgDataB64) {
-    const fullData = await this.getFileData(imgDataB64, 'original');
+  async openModalImg(imgDataB64, fileName) {
+    const fullData = await this.getFileData(imgDataB64, 'original', fileName);
     const modalRef = this.modalService.open(ModalImgComponent, { size: 'lg' });
     modalRef.componentInstance.imgDataB64 = fullData;
   }
@@ -331,8 +331,8 @@ export class CrudTableLibComponent implements OnInit {
   }
 
   // get base64 endcoded string from backend
-  async getFileData(id, size): Promise<any> {
-    const obj = { 'id': id, 'size': size };
+  async getFileData(id, size, fileName): Promise<any> {
+    const obj = { id, size, fileName };
     return await this.service.file(obj);
   }
 
