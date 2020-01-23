@@ -61,4 +61,14 @@ export default class User {
         order: 6
     })
     gender: string;
+
+    @FormField({
+        className: 'TextboxInput',
+        header: 'JSON',
+        type: 'string',
+        format: 'json',
+        required: false,
+        order: 7
+    })
+    json: string;
 }

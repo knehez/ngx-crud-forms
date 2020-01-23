@@ -11,18 +11,22 @@ export class InputControlService {
 
     inputs.forEach(input => {
       if (!input.hidden) {
-        let value;
-        // check the value is undefined or null but not 0
-        if (!input.value && input.value !== 0) {
-          value = '';
-        } else {
-          value = input.value;
-        }
         group[input.key] = input.required
-          ? new FormControl({ value: value, disabled: !input.editable }, Validators.required)
-          : new FormControl({ value: value, disabled: !input.editable });
+          ? new FormControl({ value: input.value || '', disabled: !input.editable }, Validators.required)
+          : new FormControl({ value: input.value || '', disabled: !input.editable });
+      }
+
+      // show JSON data as string
+      if (input.format === 'json') {
+        (group[input.key] as FormControl).setValue(JSON.stringify(input.value));
+      }
+
+      // handle file upload elements
+      if (input.type === 'file') {
+        group[input.key + '_data'] = new FormControl({ value: '' });
       }
     });
+
     return new FormGroup(group);
   }
 }

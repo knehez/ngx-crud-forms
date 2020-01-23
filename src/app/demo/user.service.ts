@@ -16,14 +16,16 @@ export class UserService extends GeneralRestService {
       firstName: 'John',
       lastName: 'Doe',
       email: 'john.doe@example.com',
-      gender: 'Male'
+      gender: 'Male',
+      json: [1, 2, 3]
     },
     {
       id: 2,
       firstName: 'Gipsz',
       lastName: 'Jakab',
       email: 'gipsz.jakab@example.com',
-      gender: 'Female'
+      gender: 'Female',
+      json: [1, 2, 3, 4]
     }
   ];
 
@@ -40,6 +42,8 @@ export class UserService extends GeneralRestService {
   }
 
   save(obj) {
+    console.log(obj);
+
     obj.id = this.users[this.users.length - 1].id + 1;
     this.users.push(obj);
     return Promise.resolve({ id: obj.id });
@@ -50,6 +54,8 @@ export class UserService extends GeneralRestService {
   }
 
   update(obj) {
+    console.log(obj);
+
     for (const i in this.users) {
       if (obj.id === this.users[i].id) {
         this.users[i] = obj;

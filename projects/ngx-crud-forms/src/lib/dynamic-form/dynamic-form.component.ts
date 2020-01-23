@@ -21,20 +21,29 @@ export class DynamicFormComponent implements OnInit {
     }
 
     getPayload(): any {
-        // copy form value as it is read-only
-        const formValue = Object.assign({}, this.form.value);
+
+        const payload = Object.assign({}, this.form.value);
 
         if (!this.form.valid) {
             return null;
         }
 
-        // add hidden, non modified data, because these were hidden on the form
         this.inputs.forEach(element => {
+            // add hidden, non modified data, because these were hidden on the form
             if (element.hidden) {
-                formValue[element.key] = element.value;
+                payload[element.key] = element.value;
+            }
+
+            // parse JSON data
+            if (element.format === 'json' && typeof payload[element.key] === 'string') {
+                try {
+                    payload[element.key] = JSON.parse(payload[element.key]);
+                } catch (err) {
+                    payload[element.key] = element.value;
+                }
             }
         });
 
-        return formValue;
+        return payload;
     }
 }
