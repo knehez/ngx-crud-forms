@@ -48,6 +48,7 @@ The `FormField` decorator has the following input properties. All of these are o
 |------|------|---------------|-------------|
 | className | string | null | Type of the form element that should be shown. One of these values: <ul><li>`'TextboxInput'`</li><li>`'TextareaInput'`</li><li>`'DropdownInput'`</li><li>`'RadioInput'`</li><li>`'CheckBoxInput'`</li><li>`'CalendarInput'`</li><li>`'FileInput'`</li></ul> |
 | defaultValue | string | null | Default value of the form element. |
+| format | string | null | Standard format of string data, if applicable. Allowed value(s): `'json'`. |
 | header | string | '' | Label of the form element. |
 | required | boolean | false | Indicates, whether the form element's value is required or not. |
 | order | number | 1 | Position of the form element on the generated form. |
