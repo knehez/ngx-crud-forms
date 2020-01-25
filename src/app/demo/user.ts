@@ -71,4 +71,13 @@ export default class User {
         order: 7
     })
     json: string;
+
+    @FormField({
+        className: 'FileInput',
+        header: 'File',
+        required: false,
+        type: 'file',
+        order: 8
+    })
+    file: string;
 }
