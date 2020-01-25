@@ -32,13 +32,8 @@
                   <i *ngIf="!dataRow[col.key]" class="pi pi-times text-danger"></i>
                 </div>
 
-                <div *ngSwitchCase="'file'" class="text-center">
-                  <div *ngIf="base64MimeType(dataRow[col.key]) !== null">
-                    <img class="w-25" *ngIf="base64MimeType(dataRow[col.key])['type'] === 'image'" [src]="dataRow[col.key]" (click)="openModalImg(dataRow['id'], dataRow[col.key])" libClickStopPropagation>
-                    <div *ngIf="base64MimeType(dataRow[col.key])['type'] !== 'image'">
-                      <img class="w-25" src="assets/file.png" (click)="openModalImg(dataRow['id'], dataRow[col.key])" libClickStopPropagation>
-                    </div>
-                  </div>
+                <div *ngSwitchCase="'file'">
+                  <ngb-highlight class="crud-table-col-content" (click)="openModalImg(dataRow['id'], dataRow[col.key])" [result]="dataRow[col.key]" [term]="searchFilter" libClickStopPropagation></ngb-highlight>
                 </div>
 
                 <div *ngSwitchDefault [ngSwitch]="col.controlType">
