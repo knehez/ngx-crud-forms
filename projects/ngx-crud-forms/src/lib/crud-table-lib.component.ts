@@ -11,6 +11,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { haveIntersection } from './utils/array';
 import { InputService } from './dynamic-form/input.service';
 import { ANY_ROLE_ACCESS_KEY } from './decorator';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'lib-crud-table',
@@ -161,8 +162,20 @@ export class CrudTableLibComponent implements OnInit {
     });
   }
 
-  async openModalImg(imgDataB64, fileName) {
-    const fullData = await this.getFileData(imgDataB64, 'original', fileName);
+  async openModalImg(objectId, fileId) {
+    let fullData;
+
+    try {
+      fullData = await this.getFileData(objectId, 'original', fileId);
+    } catch (err) {
+      this.operationResult.emit({
+        success: false,
+        title: 'Failed to download file',
+        message: `${err.error.message || err.message}`
+      });
+      return;
+    }
+
     const modalRef = this.modalService.open(ModalImgComponent, { size: 'lg' });
     modalRef.componentInstance.imgDataB64 = fullData;
   }
@@ -189,52 +202,76 @@ export class CrudTableLibComponent implements OnInit {
     }, (err) => ('dismissed'));
   }
 
-  async save(payLoad) {
-    if (payLoad == null) {
+  handleErrorAfterSave(err: HttpErrorResponse) {
+    if (err.status === 404) {
+      this.operationResult.emit({
+        success: false,
+        title: 'Server failure',
+        message: 'Server error occured, please refresh the page and check the table.'
+      });
+    } else {
+      this.operationResult.emit({
+        success: false,
+        title: 'Failed save',
+        message: `Failed to save record: ${err.error.message || err.message}`
+      });
+    }
+  }
+
+  handleErrorAfterEdit(err: HttpErrorResponse) {
+    if (err.status === 404) {
+      this.operationResult.emit({
+        success: false,
+        title: 'Server failure',
+        message: 'Server error occured, please refresh the page and check the table.'
+      });
+    } else {
+      this.operationResult.emit({
+        success: false,
+        title: 'Failed edit',
+        message: `Failed to edit record: ${err.error.message || err.message}`
+      });
+    }
+  }
+
+  async save(payload) {
+    if (payload == null) {
       return;
     }
 
     const models = [...this.models];
-    let response = {};
 
     if (this.isNewModel) {
 
       try {
-        models.push(payLoad);
-        response = await this.service.save(payLoad);
-        payLoad.id = response['id'];
+        const response = await this.service.save(payload);
+        const id = response['id'];
+        const model = await this.service.getOne(id);
+        models.unshift(model);
+
         this.operationResult.emit({
           success: true,
           title: 'Successful save',
           message: 'Record saved successfully.'
         });
       } catch (err) {
-        this.operationResult.emit({
-          success: false,
-          title: 'Failed save',
-          message: `Failed to save record: ${err.error.message || err.message}`
-        });
+        this.handleErrorAfterSave(err);
       }
-
     } else {
-
       try {
-        models[this.models.indexOf(this.oneModel)] = payLoad;
-        response = await this.service.update(payLoad);
-        payLoad.id = response['id'];
+        const response = await this.service.update(payload);
+        const id = response['id'];
+        const model = await this.service.getOne(id);
+        models[this.models.indexOf(this.oneModel)] = model;
+
         this.operationResult.emit({
           success: true,
           title: 'Successful edit',
           message: 'Record edited successfully.'
         });
       } catch (err) {
-        this.operationResult.emit({
-          success: false,
-          title: 'Failed edit',
-          message: `Failed to edit record: ${err.error.message || err.message}`
-        });
+        this.handleErrorAfterEdit(err);
       }
-
     }
 
     this.models = models;
@@ -331,8 +368,12 @@ export class CrudTableLibComponent implements OnInit {
   }
 
   // get base64 endcoded string from backend
-  async getFileData(id, size, fileName): Promise<any> {
-    const obj = { id, size, fileName };
+  async getFileData(objectId, size, fileId): Promise<any> {
+    const obj = {
+      id: objectId,
+      size,
+      fileName: fileId
+    };
     return await this.service.file(obj);
   }
 

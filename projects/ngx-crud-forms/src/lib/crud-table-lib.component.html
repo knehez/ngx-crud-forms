@@ -33,7 +33,7 @@
                 </div>
 
                 <div *ngSwitchCase="'file'">
-                  <ngb-highlight class="crud-table-col-content" (click)="openModalImg(dataRow['id'], dataRow[col.key])" [result]="dataRow[col.key]" [term]="searchFilter" libClickStopPropagation></ngb-highlight>
+                  <ngb-highlight *ngIf="dataRow[col.key] !== null" class="crud-table-col-content" (click)="openModalImg(dataRow['id'], dataRow[col.key]['id'])" [result]="dataRow[col.key]['name']" [term]="searchFilter" libClickStopPropagation></ngb-highlight>
                 </div>
 
                 <div *ngSwitchDefault [ngSwitch]="col.controlType">

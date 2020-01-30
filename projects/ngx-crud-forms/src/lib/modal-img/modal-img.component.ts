@@ -49,7 +49,13 @@ export class ModalImgComponent implements OnInit {
   }
 
   resSplitter(encoded, retVal) {
-    return this.base64MimeType(encoded).split('/')[retVal];
+    const mimeType = this.base64MimeType(encoded);
+
+    if (!mimeType || typeof mimeType !== 'string' || !mimeType.includes('/')) {
+      return '';
+    }
+
+    return mimeType.split('/')[retVal];
   }
 
   download() {

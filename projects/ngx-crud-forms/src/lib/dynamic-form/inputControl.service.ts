@@ -23,7 +23,7 @@ export class InputControlService {
 
       // handle file upload elements
       if (input.type === 'file') {
-        group[input.key + '_data'] = new FormControl({ value: '' });
+        (group[input.key] as FormControl).setValue(input.value || null);
       }
     });
 

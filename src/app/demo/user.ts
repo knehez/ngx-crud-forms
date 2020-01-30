@@ -1,5 +1,10 @@
 import { FormField, Permissions } from 'ngx-crud-forms';
 
+interface FileInfo {
+    id: string;
+    name: string;
+}
+
 @Permissions({
     create: [ 'admin', 'manager' ],
     read: '*',
@@ -79,5 +84,5 @@ export default class User {
         type: 'file',
         order: 8
     })
-    file: string;
+    file: FileInfo;
 }

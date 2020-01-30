@@ -17,7 +17,8 @@ export class UserService extends GeneralRestService {
       lastName: 'Doe',
       email: 'john.doe@example.com',
       gender: 'Male',
-      json: [1, 2, 3]
+      json: [1, 2, 3],
+      file: null
     },
     {
       id: 2,
@@ -25,7 +26,11 @@ export class UserService extends GeneralRestService {
       lastName: 'Jakab',
       email: 'gipsz.jakab@example.com',
       gender: 'Female',
-      json: [1, 2, 3, 4]
+      json: [1, 2, 3, 4],
+      file: {
+        id: '1',
+        name: 'asd.txt'
+      }
     }
   ];
 
@@ -34,19 +39,29 @@ export class UserService extends GeneralRestService {
   }
 
   getAll() {
-    return Promise.resolve(this.users);
+    return Promise.resolve([...this.users]);
   }
 
   getAllSync() {
     return this.getAll();
   }
 
-  save(obj) {
-    console.log(obj);
+  getOne(id: number) {
+    for (const user of this.users) {
+      if (user.id === id) {
+        return Promise.resolve(Object.assign({}, user));
+      }
+    }
 
-    obj.id = this.users[this.users.length - 1].id + 1;
-    this.users.push(obj);
-    return Promise.resolve({ id: obj.id });
+    return Promise.reject(false);
+  }
+
+  save(obj) {
+    console.log('SAVE', obj);
+    const objToSave = Object.assign({}, obj);
+    objToSave.id = this.users[this.users.length - 1].id + 1;
+    this.users.push(objToSave);
+    return Promise.resolve({ id: objToSave.id });
   }
 
   file(obj) {
@@ -54,12 +69,13 @@ export class UserService extends GeneralRestService {
   }
 
   update(obj) {
-    console.log(obj);
+    console.log('UPDATE', obj);
+    const objToUpdate = Object.assign({}, obj);
 
     for (const i in this.users) {
-      if (obj.id === this.users[i].id) {
-        this.users[i] = obj;
-        return Promise.resolve({ success: true, id: obj.id });
+      if (objToUpdate.id === this.users[i].id) {
+        this.users[i] = objToUpdate;
+        return Promise.resolve({ success: true, id: objToUpdate.id });
       }
     }
 
@@ -67,6 +83,7 @@ export class UserService extends GeneralRestService {
   }
 
   delete(obj) {
+    console.log('DELETE', obj);
     this.users.splice(this.users.indexOf(obj), 1);
     return Promise.resolve({ success: true });
   }
