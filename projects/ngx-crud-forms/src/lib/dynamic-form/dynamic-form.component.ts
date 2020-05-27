@@ -10,6 +10,7 @@ import { InputControlService } from './inputControl.service';
 })
 export class DynamicFormComponent implements OnInit {
 
+    @Input() isNewModel: boolean = false;
     @Input() inputs: InputBase<any>[] = [];
     @Output() saved = new EventEmitter<boolean>();
     form: FormGroup;

@@ -14,6 +14,7 @@ export class InputBase<T> {
     type: string;
     style: string;
     hidden: boolean;
+    hideOnCreate: boolean;
     editable: boolean;
     format: 'json' | string;
     dateFormat: string;
@@ -32,6 +33,7 @@ export class InputBase<T> {
         type?: string,
         style?: string;
         hidden?: boolean,
+        hideOnCreate?: boolean,
         editable?: boolean,
         format?: 'json' | string;
         dateFormat?: string;
@@ -49,6 +51,7 @@ export class InputBase<T> {
         this.type = options.type || 'text';
         this.style = options.style || '';
         this.hidden = options.hidden || false;
+        this.hideOnCreate = options.hideOnCreate || false;
         this.editable = options.editable !== false;
         this.format = options.format || null;
         this.dateFormat = options.dateFormat || '';

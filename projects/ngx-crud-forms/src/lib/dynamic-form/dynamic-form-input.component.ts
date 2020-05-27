@@ -10,10 +10,15 @@ import { TextboxInput } from './form-elements/textBox';
     styleUrls: ['./dynamic-form-input.component.css'],
 })
 export class DynamicFormInputComponent {
+    @Input() isNewModel: boolean = false;
     @Input() input: InputBase<any> = new TextboxInput({ key: 'default' });
     @Input() form: FormGroup = new FormGroup({ default: new FormControl() });
 
     get isValid() {
+        if (this.input.hidden || this.input.hideOnCreate && this.isNewModel) {
+            return true;
+        }
+
         return this.form.controls[this.input.key].valid;
     }
 

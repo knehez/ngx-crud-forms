@@ -54,6 +54,7 @@ The `FormField` decorator has the following input properties. All of these are o
 | order | number | 1 | Position of the form element on the generated form. |
 | type | string | 'text' | Type of the `input` element, where applicable (e.g. email, password, number). |
 | hidden | boolean | false | Indicates whether the form element should be hidden (e.g. for IDs). |
+| hideOnCreate | boolean | false | Indicates whether the form element should be hidden when creating a new record. |
 | editable | boolean | true | Indicates whether the form element can be modified. |
 | linkedObject | string | null | Name of the linked object. |
 | linkedData | object | null | Name and field of the linked object (e.g. `{entity: 'task', value: 'taskName'}`) |

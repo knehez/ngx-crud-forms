@@ -30,7 +30,8 @@ export class UserService extends GeneralRestService {
       file: {
         id: '1',
         name: 'asd.txt'
-      }
+      },
+      secretField: 'secret'
     }
   ];
 

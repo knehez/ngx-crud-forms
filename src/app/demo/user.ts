@@ -85,4 +85,14 @@ export default class User {
         order: 8
     })
     file: FileInfo;
+
+    @FormField({
+        className: 'TextboxInput',
+        header: 'Secret field',
+        type: 'string',
+        required: false,
+        hideOnCreate: true,
+        order: 9
+    })
+    secretField: string;
 }
