@@ -68,6 +68,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
+            "aot": true,
             "browserTarget": "dynamic-forms-lib:build"
           },
           "configurations": {
@@ -152,13 +153,13 @@
           "options": {
             "tsConfig": "projects/ngx-crud-forms/tsconfig.lib.json",
             "project": "projects/ngx-crud-forms/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/ngx-crud-forms/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {

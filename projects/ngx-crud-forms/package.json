@@ -22,15 +22,15 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "@angular/common": "^7.2.0",
-    "@angular/core": "^7.2.0"
+    "@angular/common": "~9.1.11",
+    "@angular/core": "~9.1.11"
   },
   "dependencies": {
-    "@ng-bootstrap/ng-bootstrap": "4.2.2",
-    "@ng-select/ng-select": "2.20.5",
+    "@ng-bootstrap/ng-bootstrap": "6.1.0",
+    "@ng-select/ng-select": "4.0.0",
     "file-saver": "2.0.2",
     "moment": "2.24.0",
-    "primeng": "8.0.3",
+    "primeng": "9.1.0",
     "reflect-metadata": "0.1.13"
   }
 }
