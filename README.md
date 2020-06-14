@@ -4,6 +4,14 @@ The module performs client-side authorization tasks too.
 
 <img src="https://raw.githubusercontent.com/knehez/ngx-crud-forms/master/docs/img/crud-table-screenshot.png" width="600" height="242" /><img src="https://raw.githubusercontent.com/knehez/ngx-crud-forms/master/docs/img/modal-form-screenshot.png" width="188" height="242" />
 
+## Compatibility
+Different versions of `ngx-crud-forms` are compatible with different versions of the Angular framework. The following table shows the compatibility relations.
+
+ngx-crud-forms       | Angular
+---------------------|--------
+v1.x.x <br /> v2.x.x | v7.x.x
+v3.x.x               | v9.x.x
+
 ## Installing the library
 To use ``ngx-crud-forms``, you should import CSS files from other modules to your project.
 
