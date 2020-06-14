@@ -13,7 +13,7 @@ export class ModalFormComponent implements OnInit {
   @Input() entityName: string;
   @Input() formPermissions: any;
 
-  @ViewChild(DynamicFormComponent) formComponent: DynamicFormComponent;
+  @ViewChild(DynamicFormComponent, { static: true }) formComponent: DynamicFormComponent;
 
   constructor(public activeModal: NgbActiveModal) { }
 
