@@ -95,4 +95,14 @@ export default class User {
         order: 9
     })
     secretField: string;
+
+    @FormField({
+        className: 'DropdownInput',
+        header: 'Roles',
+        linkedObject: 'roles',
+        linkedData: { entity: 'role', value: 'roleName' },
+        multipleSelect: true,
+        order: 8
+    })
+    roles: any[];
 }

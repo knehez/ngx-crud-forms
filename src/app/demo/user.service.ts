@@ -17,6 +17,16 @@ export class UserService extends GeneralRestService {
       lastName: 'Doe',
       email: 'john.doe@example.com',
       gender: 'Male',
+      roles: [
+        {
+          id: 1,
+          roleName: 'guest'
+        },
+        {
+          id: 2,
+          roleName: 'manager'
+        }
+      ],
       json: [1, 2, 3],
       file: null
     },
@@ -27,11 +37,44 @@ export class UserService extends GeneralRestService {
       email: 'gipsz.jakab@example.com',
       gender: 'Female',
       json: [1, 2, 3, 4],
+      roles: [
+        {
+          id: 2,
+          roleName: 'manager'
+        },
+        {
+          id: 3,
+          roleName: 'admin'
+        },
+        {
+          id: 4,
+          roleName: 'asdasdasdasdasdasda'
+        }
+      ],
       file: {
         id: '1',
         name: 'asd.txt'
       },
       secretField: 'secret'
+    }
+  ];
+
+  roles = [
+    {
+      id: 1,
+      roleName: 'guest'
+    },
+    {
+      id: 2,
+      roleName: 'manager'
+    },
+    {
+      id: 3,
+      roleName: 'admin'
+    },
+    {
+      id: 4,
+      roleName: 'asdasdasdasdasdasda'
     }
   ];
 
@@ -43,7 +86,11 @@ export class UserService extends GeneralRestService {
     return Promise.resolve([...this.users]);
   }
 
-  getAllSync() {
+  getAllSync(objectName: string) {
+    if (objectName === 'roles') {
+      return Promise.resolve([...this.roles]);
+    }
+
     return this.getAll();
   }
 
