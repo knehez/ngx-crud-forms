@@ -51,12 +51,12 @@
 
             <div *ngIf="col.linkedObject && col.multipleSelect">
               <span *ngFor="let val of dataRow[col.linkedObject]" class="badge badge-success m-1"
-                (click)="cellSelect.emit({col:col.linkedData, data:val[col.linkedData.value]})" libClickStopPropagation>
+                (click)="cellSelect.emit({col:col.linkedData, data:val[col.linkedData.value], dataRow})" libClickStopPropagation>
                 {{val[col.linkedData.value]}}</span>
             </div>
             <div *ngIf="col.linkedObject && !col.multipleSelect">
               <span class="badge badge-success m-1"
-                (click)="cellSelect.emit({col:col.linkedData, data: dataRow[singleName(col.linkedObject)][col.linkedData.value]})"
+                (click)="cellSelect.emit({col:col.linkedData, data: dataRow[singleName(col.linkedObject)][col.linkedData.value], dataRow})"
                 libClickStopPropagation>
                 {{dataRow[singleName(col.linkedObject)][col.linkedData.value]}}</span>
             </div>
