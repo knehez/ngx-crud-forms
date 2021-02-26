@@ -1,4 +1,5 @@
 import { FormField, Permissions } from 'ngx-crud-forms';
+import { VideoChapter } from './video-chapter';
 
 interface FileInfo {
     id: string;
@@ -95,4 +96,15 @@ export default class User {
         order: 9
     })
     secretField: string;
+
+    @FormField({
+        className: 'VideoChapterInput',
+        header: 'Video chapters',
+        linkedObject: 'videoChapters',
+        linkedData: { key: 'id', value: 'timestamp' },
+        multipleSelect: true,
+        required: false,
+        order: 8
+    })
+    videoChapters: VideoChapter[];
 }

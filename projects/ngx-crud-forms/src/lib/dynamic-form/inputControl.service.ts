@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InputBase } from './form-elements/inputBase';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 
 @Injectable()
 export class InputControlService {
@@ -24,6 +24,17 @@ export class InputControlService {
       // handle file upload elements
       if (input.type === 'file') {
         (group[input.key] as FormControl).setValue(input.value || null);
+      }
+
+      if (input.controlType === 'videochapter') {
+        const fb = new FormBuilder();
+        group[input.key] = fb.array([]);
+
+        const chapters = input.value || [];
+
+        for (const chapter of chapters) {
+          group[input.key].push(fb.group(chapter));
+        }
       }
     });
 

@@ -8,6 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "build-local": "ng build ngx-crud-forms --watch",
     "build-package": "ng build ngx-crud-forms && node ./utils/postBuild.js && cd dist/ngx-crud-forms && npm pack"
   },
   "private": true,

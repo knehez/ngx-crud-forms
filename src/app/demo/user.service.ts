@@ -10,6 +10,19 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class UserService extends GeneralRestService {
 
+  videoChapters = [
+    {
+      id: 1,
+      timestamp: '00:05',
+      title: 'First chapter'
+    },
+    {
+      id: 2,
+      timestamp: '05:00',
+      title: 'Second chapter'
+    }
+  ];
+
   users = [
     {
       id: 1,
@@ -18,6 +31,18 @@ export class UserService extends GeneralRestService {
       email: 'john.doe@example.com',
       gender: 'Male',
       json: [1, 2, 3],
+      videoChapters: [
+        {
+          id: 1,
+          timestamp: '00:05',
+          title: 'First chapter'
+        },
+        {
+          id: 2,
+          timestamp: '05:00',
+          title: 'Second chapter'
+        }
+      ],
       file: null
     },
     {
@@ -40,16 +65,22 @@ export class UserService extends GeneralRestService {
   }
 
   getAll() {
+    console.log('GET ALL', [...this.users]);
     return Promise.resolve([...this.users]);
   }
 
-  getAllSync() {
+  getAllSync(objectName: string) {
+    if (objectName === 'videoChapters') {
+      return Promise.resolve([...this.videoChapters]);
+    }
+
     return this.getAll();
   }
 
   getOne(id: number) {
     for (const user of this.users) {
       if (user.id === id) {
+        console.log('GET ONE', user);
         return Promise.resolve(Object.assign({}, user));
       }
     }

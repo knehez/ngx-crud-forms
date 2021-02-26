@@ -1,7 +1,7 @@
 {
   "name": "ngx-crud-forms",
-  "version": "2.1.0",
-  "description": "Angular 7 dynamic reactive forms",
+  "version": "2.1.0-qas.0",
+  "description": "Angular dynamic reactive forms",
   "contributors": [
     {
       "name": "Dr. Károly Nehéz",

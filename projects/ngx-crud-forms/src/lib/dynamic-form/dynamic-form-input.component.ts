@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms';
 import { InputBase } from './form-elements/inputBase';
 import { FileHandlerService } from './fileHandler.service';
 import { TextboxInput } from './form-elements/textBox';
@@ -31,6 +31,21 @@ export class DynamicFormInputComponent {
 
     public onFileChange(event): void {
         this.fileHandlerService.onFileChange(event, this.form);
+    }
+
+    deleteVideoChapter(key, i) {
+        const array = this.form.get(key) as FormArray;
+        array.removeAt(i);
+    }
+
+    addVideoChapter(key) {
+        const fb = new FormBuilder();
+        const array = this.form.get(key) as FormArray;
+        array.push(fb.group({
+            id: null,
+            timestamp: '',
+            title: ''
+        }));
     }
 }
 

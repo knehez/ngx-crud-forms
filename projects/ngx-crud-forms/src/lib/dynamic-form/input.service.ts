@@ -8,6 +8,7 @@ import { PROPERTY_METADATA_KEY, CLASS_PERMISSION_METADATA_KEY, TOP_LEVEL_ACCESS_
 import { CalendarInput } from './form-elements/calendar';
 import { CheckBoxInput } from './form-elements/checkbox';
 import { FileInput } from './form-elements/fileinput';
+import { VideoChapterInput } from './form-elements/videochapter';
 
 @Injectable({
     providedIn: 'root'
@@ -48,6 +49,9 @@ export class InputService {
                     case 'CalendarInput':
                         controlObject = new CalendarInput(params);
                         break;
+                    case 'VideoChapterInput':
+                        controlObject = new VideoChapterInput(params);
+                        break;
                     case 'FileInput':
                         controlObject = new FileInput(params);
                         break;
@@ -62,10 +66,10 @@ export class InputService {
         return userInputs.sort((a, b) => a.order - b.order);
     }
 
-    getPermissions (entity) {
+    getPermissions(entity) {
         const onlyAdminPermissions = {
             create: [TOP_LEVEL_ACCESS_KEY],
-            read:   [TOP_LEVEL_ACCESS_KEY],
+            read: [TOP_LEVEL_ACCESS_KEY],
             update: [TOP_LEVEL_ACCESS_KEY],
             delete: [TOP_LEVEL_ACCESS_KEY]
         };
