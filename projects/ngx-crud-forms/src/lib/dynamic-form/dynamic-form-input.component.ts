@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { InputBase } from './form-elements/inputBase';
 import { FileHandlerService } from './fileHandler.service';
 import { TextboxInput } from './form-elements/textBox';
@@ -43,7 +43,7 @@ export class DynamicFormInputComponent {
         const array = this.form.get(key) as FormArray;
         array.push(fb.group({
             id: null,
-            timestamp: '',
+            timestamp: ['', Validators.pattern(/^[0-9]{2}:(0|1|2|3|4|5)[0-9]$/)], // MM:SS
             title: ''
         }));
     }

@@ -51,9 +51,14 @@
                             <input type="text" class="form-control" formControlName="title" placeholder="Chapter title">
                         </div>
                         <div class="col-md-2 pl-1 my-auto">
-                            <button class="btn btn-sm btn-danger" (click)="deleteVideoChapter(input.key, i)">Delete</button>
+                            <button class="btn btn-sm btn-danger"
+                                (click)="deleteVideoChapter(input.key, i)">Delete</button>
                         </div>
                     </ng-container>
+                    <br>
+                    <small class="text-danger ml-3" *ngIf="this.form.get(input.key)['controls'][i].invalid">
+                        Timestamp must be in MM:SS format.
+                    </small>
                 </div>
             </ng-container>
 
