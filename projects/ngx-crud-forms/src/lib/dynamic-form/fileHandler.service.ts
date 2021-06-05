@@ -43,7 +43,7 @@ export class FileHandlerService {
       return;
     }
 
-    const actualFiles = formGroup.get(event.target.id).value;
+    const actualFiles = formGroup.get(event.target.id).value || [];
     const newFiles = [];
 
     // tslint:disable-next-line: prefer-for-of
