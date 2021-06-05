@@ -40,7 +40,7 @@ export class DynamicFormInputComponent {
     deleteFromFileList(key, i) {
         const fileList = this.form.get(key).value as [];
         fileList.splice(i);
-        this.form.patchValue({ key: fileList });
+        this.form.patchValue({ [key]: fileList });
     }
 
     deleteVideoChapter(key, i) {
