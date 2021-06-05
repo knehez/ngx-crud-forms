@@ -12,6 +12,19 @@
         <input *ngSwitchCase="'file'" class="form-control" [type]="input.type" [ngStyle]="input.style" [id]="input.key"
             (change)="onFileChange($event)" />
 
+        <div *ngSwitchCase="'multipleFile'">
+            <input class="form-control" [type]="input.type" [ngStyle]="input.style" [id]="input.key" multiple
+                (change)="onMultipleFileChange($event)" />
+            <p *ngIf="this.form.get(input.key).value && this.form.get(input.key).value.length > 0" class="mb-0">
+                Current files:</p>
+            <ul>
+                <li *ngFor="let file of this.form.get(input.key).value; let i = index;" class="mb-1">
+                    {{ file.name }}
+                    <button class="btn btn-sm btn-danger" (click)="deleteFromFileList(input.key, i)">Delete</button>
+                </li>
+            </ul>
+        </div>
+
         <div *ngSwitchCase="'dropdown'">
             <ng-select *ngIf="input.linkedObject" [addTag]="true" addTagText="Add" [items]="input['allValues']"
                 [multiple]="input['multipleSelect']" [closeOnSelect]="false" [ngStyle]="input.style"

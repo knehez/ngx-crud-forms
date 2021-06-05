@@ -87,13 +87,22 @@ export default class User {
     })
     file: FileInfo;
 
+   @FormField({
+        className: 'MultipleFileInput',
+        header: 'Videos',
+        required: false,
+        type: 'file',
+        order: 9
+    })
+    videos: FileInfo[];
+
     @FormField({
         className: 'TextboxInput',
         header: 'Secret field',
         type: 'string',
         required: false,
         hideOnCreate: true,
-        order: 9
+        order: 10
     })
     secretField: string;
 
@@ -104,7 +113,7 @@ export default class User {
         linkedData: { key: 'id', value: 'timestamp' },
         multipleSelect: true,
         required: false,
-        order: 8
+        order: 11
     })
     videoChapters: VideoChapter[];
 }

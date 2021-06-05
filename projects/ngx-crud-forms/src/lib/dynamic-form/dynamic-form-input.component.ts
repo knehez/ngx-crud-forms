@@ -33,6 +33,16 @@ export class DynamicFormInputComponent {
         this.fileHandlerService.onFileChange(event, this.form);
     }
 
+    public onMultipleFileChange(event): void {
+        this.fileHandlerService.onMultipleFileChange(event, this.form);
+    }
+
+    deleteFromFileList(key, i) {
+        const fileList = this.form.get(key).value as [];
+        fileList.splice(i);
+        this.form.patchValue({ key: fileList });
+    }
+
     deleteVideoChapter(key, i) {
         const array = this.form.get(key) as FormArray;
         array.removeAt(i);

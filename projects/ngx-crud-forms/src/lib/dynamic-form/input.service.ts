@@ -9,6 +9,7 @@ import { CalendarInput } from './form-elements/calendar';
 import { CheckBoxInput } from './form-elements/checkbox';
 import { FileInput } from './form-elements/fileinput';
 import { VideoChapterInput } from './form-elements/videochapter';
+import { MultipleFileInput } from './form-elements/multipleFile';
 
 @Injectable({
     providedIn: 'root'
@@ -54,6 +55,9 @@ export class InputService {
                         break;
                     case 'FileInput':
                         controlObject = new FileInput(params);
+                        break;
+                    case 'MultipleFileInput':
+                        controlObject = new MultipleFileInput(params);
                         break;
                     default:
                         throw new Error('dynamicForm: className not found:' + className);

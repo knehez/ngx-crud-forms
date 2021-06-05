@@ -43,7 +43,17 @@ export class UserService extends GeneralRestService {
           title: 'Second chapter'
         }
       ],
-      file: null
+      file: null,
+      videos: [
+        {
+          id: '2',
+          name: 'asd1.mp4'
+        },
+        {
+          id: '3',
+          name: 'asd2.mp4'
+        }
+      ]
     },
     {
       id: 2,
