@@ -43,7 +43,8 @@
                   <div class="container-fluid">
                     <div class="row">
                       <ngb-highlight class="crud-table-col-content col-12 mt-1" *ngFor="let file of dataRow[col.key]"
-                        (click)="openModalImg(dataRow['id'], file.id)" [result]="file.name" [term]="searchFilter">
+                        (click)="openModalImg(dataRow['id'], file.id)" [result]="file.name" [term]="searchFilter"
+                        libClickStopPropagation>
                       </ngb-highlight>
                     </div>
                   </div>
