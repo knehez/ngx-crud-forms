@@ -39,7 +39,7 @@ export class DynamicFormInputComponent {
 
     deleteFromFileList(key, i) {
         const fileList = this.form.get(key).value as [];
-        fileList.splice(i);
+        fileList.splice(i, 1);
         this.form.patchValue({ [key]: fileList });
     }
 
