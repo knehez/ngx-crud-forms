@@ -151,7 +151,7 @@ describe('CrudTableLibComponent', () => {
     component.filter = DEFAULT_FILTER;
     component.ngOnInit();
 
-    generalRestService = TestBed.get(GeneralRestService);
+    generalRestService = TestBed.inject(GeneralRestService);
     await fixture.whenStable();
     fixture.detectChanges();
   });
