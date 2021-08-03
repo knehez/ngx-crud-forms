@@ -31,6 +31,7 @@
     "file-saver": "2.0.2",
     "moment": "2.24.0",
     "primeng": "9.1.0",
-    "reflect-metadata": "0.1.13"
+    "reflect-metadata": "0.1.13",
+    "tslib": "^2.0.0"
   }
 }
