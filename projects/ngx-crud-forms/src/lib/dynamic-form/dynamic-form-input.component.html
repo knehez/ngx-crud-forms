@@ -23,8 +23,8 @@
 
         <div *ngSwitchCase="'radio'">
             <div *ngFor="let opt of input['options']" class="form-check form-check-inline">
-                <input [name]="input.key" value="{{opt.key}}" [formControlName]="input.key" class="form-check-input"
-                    [type]="'radio'" [checked]="input.value == opt.key" [ngStyle]="input.style">
+                <input [name]="input.key" [value]="opt.key" [formControlName]="input.key" class="form-check-input"
+                    type="radio" [checked]="input.value == opt.key" [ngStyle]="input.style">
                 <span class="form-check-label" [ngStyle]="input.style">{{opt.value}}</span>
             </div>
         </div>
