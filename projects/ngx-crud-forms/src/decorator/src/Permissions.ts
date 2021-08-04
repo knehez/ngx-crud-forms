@@ -1,11 +1,11 @@
 import 'reflect-metadata';
 
-export const CLASS_PERMISSION_METADATA_KEY = Symbol('dynamicFormMetadata:permissions');
+export const CLASS_PERMISSION_METADATA_KEY = Symbol.for('ngx-crud-forms:dynamicFormMetadata:permissions');
 
 export const TOP_LEVEL_ACCESS_KEY = 'admin';
 export const ANY_ROLE_ACCESS_KEY = '*';
 
-function getValueOrDefault (permissions: string|string[]) {
+function getValueOrDefault(permissions: string|string[]) {
     if (!permissions) {
         return [ TOP_LEVEL_ACCESS_KEY ];
     }

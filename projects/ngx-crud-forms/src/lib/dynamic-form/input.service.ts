@@ -4,7 +4,7 @@ import { TextboxInput } from './form-elements/textBox';
 import { TextareaInput } from './form-elements/textArea';
 import { RadioInput } from './form-elements/radio';
 import 'reflect-metadata';
-import { PROPERTY_METADATA_KEY, CLASS_PERMISSION_METADATA_KEY, TOP_LEVEL_ACCESS_KEY } from '../decorator';
+import { PROPERTY_METADATA_KEY, CLASS_PERMISSION_METADATA_KEY, TOP_LEVEL_ACCESS_KEY } from '../../decorator/src/public_api';
 import { CalendarInput } from './form-elements/calendar';
 import { CheckBoxInput } from './form-elements/checkbox';
 import { FileInput } from './form-elements/fileinput';
@@ -62,7 +62,7 @@ export class InputService {
         return userInputs.sort((a, b) => a.order - b.order);
     }
 
-    getPermissions (entity) {
+    getPermissions(entity) {
         const onlyAdminPermissions = {
             create: [TOP_LEVEL_ACCESS_KEY],
             read:   [TOP_LEVEL_ACCESS_KEY],

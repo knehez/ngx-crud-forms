@@ -1,4 +1,4 @@
-import { FormField, Permissions } from 'ngx-crud-forms';
+import { FormField, Permissions } from 'ngx-crud-forms/src/decorator';
 
 interface FileInfo {
     id: string;

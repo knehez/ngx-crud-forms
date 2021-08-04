@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 
-export const PROPERTY_METADATA_KEY = Symbol('dynamicFormMetadata');
+export const PROPERTY_METADATA_KEY = Symbol.for('ngx-crud-forms:dynamicFormMetadata');
 
 export function FormField(updates: any) {
     return (target: any, propertyKey: string | symbol) => {

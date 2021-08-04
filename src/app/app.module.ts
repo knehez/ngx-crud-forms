@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { CrudTableLibModule } from 'ngx-crud-forms';
 import { DemoComponent } from './demo/demo.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { DemoComponent } from './demo/demo.component';
   ],
   imports: [
     BrowserModule,
-    CrudTableLibModule
+    CrudTableLibModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

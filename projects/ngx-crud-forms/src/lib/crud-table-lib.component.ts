@@ -10,7 +10,7 @@ const moment = moment_;
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { haveIntersection } from './utils/array';
 import { InputService } from './dynamic-form/input.service';
-import { ANY_ROLE_ACCESS_KEY } from './decorator';
+import { ANY_ROLE_ACCESS_KEY } from '../decorator/src/public_api';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({

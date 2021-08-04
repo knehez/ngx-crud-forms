@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
@@ -12,7 +11,6 @@ import { ModalImgComponent } from './modal-img/modal-img.component';
 import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
 import { ModalFormComponent } from './modal-form/modal-form.component';
 import { ClickStopPropagationDirective } from './click-stop-propagation.directive';
-import { HttpClientModule } from '@angular/common/http';
 import { ConfirmationService } from 'primeng/api';
 import { GeneralRestService } from './general-rest.service';
 
@@ -26,12 +24,10 @@ import { GeneralRestService } from './general-rest.service';
   imports: [
     CommonModule,
     NgbModule,
-    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     DynamicFormModule,
-    ConfirmDialogModule,
-    HttpClientModule
+    ConfirmDialogModule
   ],
   providers: [
     InputService,

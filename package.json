@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-package": "ng build ngx-crud-forms && node ./utils/postBuild.js && cd dist/ngx-crud-forms && npm pack"
+    "build-package": "ng build ngx-crud-forms --configuration production && node ./utils/postBuild.js && cd dist/ngx-crud-forms && npm pack"
   },
   "private": true,
   "dependencies": {
@@ -22,13 +22,13 @@
     "@angular/platform-browser": "~12.1.4",
     "@angular/platform-browser-dynamic": "~12.1.4",
     "@angular/router": "~12.1.4",
-    "@ng-bootstrap/ng-bootstrap": "^6.1.0",
-    "@ng-select/ng-select": "^4.0.0",
-    "bootstrap": "^4.4.1",
+    "@ng-bootstrap/ng-bootstrap": "^10.0.0",
+    "@ng-select/ng-select": "^7.2.0",
+    "bootstrap": "^4.5.0",
     "core-js": "^2.5.4",
     "ngx-crud-forms": "file:dist/ngx-crud-forms",
     "primeicons": "^2.0.0",
-    "primeng": "^9.1.0",
+    "primeng": "^12.0.1",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"

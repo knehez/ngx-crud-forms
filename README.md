@@ -9,19 +9,20 @@ Different versions of `ngx-crud-forms` are compatible with different versions of
 
 ngx-crud-forms       | Angular
 ---------------------|--------
-v1.x.x <br /> v2.x.x | v7.x.x
-v3.x.x               | v9.x.x <br /> v10.x.x
+v1.x.x <br /> v2.x.x | v7.x.x <br /> v8.x.x
+v3.x.x               | v9.x.x <br /> v10.x.x <br /> v11.x.x
+v4.x.x               | v12.x.x
 
 ## Installing the library
 To use ``ngx-crud-forms``, you should import CSS files from other modules to your project.
 
-1) Run the following command: ``npm install --save bootstrap primeng primeicons @ng-select/ng-select``
+1) Run the following command: ``npm install --save bootstrap@4.5.0 primeng primeicons @ng-select/ng-select``
 
 2) In your `angular.json` copy the following lines to the `styles` property of your project:
 
     ```ts
     "node_modules/bootstrap/dist/css/bootstrap.css",
-    "node_modules/primeng/resources/themes/nova-light/theme.css",
+    "node_modules/primeng/resources/themes/nova/theme.css",
     "node_modules/primeng/resources/primeng.min.css",
     "node_modules/primeicons/primeicons.css",
     "node_modules/@ng-select/ng-select/themes/default.theme.css"
@@ -29,7 +30,7 @@ To use ``ngx-crud-forms``, you should import CSS files from other modules to you
 
 3) Install ``ngx-crud-forms``: ``npm install --save ngx-crud-forms``
 
-3) Import `CrudTableLibModule` in your `AppModule`:
+3) Import `CrudTableLibModule` in your `AppModule`. Importing `HttpClientModule` is also required for our `GeneralRestService` to work:
 
     ```ts
     import { CrudTableLibModule } from 'ngx-crud-forms';
@@ -38,6 +39,7 @@ To use ``ngx-crud-forms``, you should import CSS files from other modules to you
         ...
         imports: [
             BrowserModule,
+            HttpClientModule
             CrudTableLibModule
         ],
         ...
@@ -113,7 +115,7 @@ export default class User { }
 ### CRUD table
 The Crud Table Component can be used in your Angular project to visualise your data.
 
-You can put the `<lib-crud-table>` selector to your HTML code. It has the following input/output properties:
+You can put the `<lib-crud-table>` selector to your HTML templates. It has the following input/output properties:
 
 | Name | Input/Output | Type | Description |
 |------|--------------|------|-------------|

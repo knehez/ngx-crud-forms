@@ -11,7 +11,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ModalFormComponent } from './modal-form/modal-form.component';
 import { ClickStopPropagationDirective } from './click-stop-propagation.directive';
 import { ModalImgComponent } from './modal-img/modal-img.component';
-import { Permissions, FormField } from './decorator';
+import { Permissions, FormField } from '../decorator/src/public_api';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 /* Default data and mock classes */
