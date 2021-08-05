@@ -124,8 +124,10 @@ You can put the `<lib-crud-table>` selector to your HTML templates. It has the f
 | entityName | Input | string | Name of the entity. |
 | itemsPerPage | Input | number | Number of items should shown in a page. |
 | filter | Input | string | Value of the search field. |
+| selectionType | Input | string | Type of selection. (default: `'multiple'`) Possible values:<br /> - `'multiple'` - Selecting multiple rows is possible. <br />- `'one'` - Only one row can be selected. |
 | showAdd | Input | boolean | Indicates whether the 'Add' button should shown. |
 | showEdit | Input | boolean | Indicates whether the 'Edit' button should shown. |
+| showDelete | Input | boolean | Indicates whether the 'Delete' button should shown. |
 | showBack | Input | boolean | Indicates whether the 'Back' button should shown. |
 | rowSelect | Output | Function | This function is called after a row is selected. |
 | cellSelect | Output | Function | This function is called after a cell is selected. |

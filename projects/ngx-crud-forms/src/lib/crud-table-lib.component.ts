@@ -30,6 +30,7 @@ export class CrudTableLibComponent implements OnInit {
   @Input() entityName: string;
   @Input() itemsPerPage: number;
   @Input() filter: any;
+  @Input() selectionType: 'multiple' | 'one' = 'multiple';
   @Output() rowSelect = new EventEmitter();
   @Output() cellSelect = new EventEmitter();
   @Output() backClicked = new EventEmitter();
@@ -38,6 +39,7 @@ export class CrudTableLibComponent implements OnInit {
 
   @Input() showAdd = true;
   @Input() showEdit = true;
+  @Input() showDelete = true;
   @Input() showBack = true;
   models = [];
 
@@ -70,10 +72,17 @@ export class CrudTableLibComponent implements OnInit {
   }
 
   selectRow(row) {
-    if (this.selectedRows.includes(row)) {
-      this.selectedRows.splice(this.selectedRows.indexOf(row), 1);
-    } else {
+    if (this.selectionType === 'one') {
+      this.selectedRows.splice(0, this.selectedRows.length);
       this.selectedRows.push(row);
+    }
+
+    if (this.selectionType === 'multiple') {
+      if (this.selectedRows.includes(row)) {
+        this.selectedRows.splice(this.selectedRows.indexOf(row), 1);
+      } else {
+        this.selectedRows.push(row);
+      }
     }
   }
 

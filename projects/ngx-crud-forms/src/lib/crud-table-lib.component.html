@@ -70,7 +70,7 @@
               [disabled]="!canUpdateEntity()">
               <span class="pi pi-pencil"></span>
             </button>
-            <button type="button" class="btn btn-outline-danger mr-1 btn-sm crud-table-row-delete-btn"
+            <button type="button" class="btn btn-outline-danger mr-1 btn-sm crud-table-row-delete-btn" *ngIf="showDelete"
               (click)="confirmThenDelete(dataRow)"
               [disabled]="!canDeleteEntity()">
               <span class="pi pi-trash"></span>
