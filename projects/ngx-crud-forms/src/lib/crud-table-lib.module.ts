@@ -15,28 +15,25 @@ import { ConfirmationService } from 'primeng/api';
 import { GeneralRestService } from './general-rest.service';
 
 @NgModule({
-  declarations: [
-    CrudTableLibComponent,
-    ModalImgComponent,
-    ModalFormComponent,
-    ClickStopPropagationDirective
-  ],
-  imports: [
-    CommonModule,
-    NgbModule,
-    FormsModule,
-    ReactiveFormsModule,
-    DynamicFormModule,
-    ConfirmDialogModule
-  ],
-  providers: [
-    InputService,
-    ConfirmationService,
-    GeneralRestService
-  ],
-  entryComponents: [
-    ModalImgComponent
-  ],
-  exports: [CrudTableLibComponent]
+    declarations: [
+        CrudTableLibComponent,
+        ModalImgComponent,
+        ModalFormComponent,
+        ClickStopPropagationDirective
+    ],
+    imports: [
+        CommonModule,
+        NgbModule,
+        FormsModule,
+        ReactiveFormsModule,
+        DynamicFormModule,
+        ConfirmDialogModule
+    ],
+    providers: [
+        InputService,
+        ConfirmationService,
+        GeneralRestService
+    ],
+    exports: [CrudTableLibComponent]
 })
 export class CrudTableLibModule { }

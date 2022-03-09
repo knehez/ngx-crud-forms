@@ -11,7 +11,7 @@
       "node_modules/@ng-select/ng-select/themes/default.theme.css"
     ]
   },
-  "whitelistedNonPeerDependencies": [
+  "allowedNonPeerDependencies": [
     "tslib",
     "@ng-bootstrap/ng-bootstrap",
     "@ng-select/ng-select",
