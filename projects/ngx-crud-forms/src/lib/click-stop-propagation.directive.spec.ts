@@ -4,8 +4,11 @@ describe('ClickStopPropagationDirective', () => {
 
   let directive;
 
-  it('should create an instance', () => {
+  beforeEach(() => {
     directive = new ClickStopPropagationDirective();
+  });
+
+  it('should create an instance', () => {
     expect(directive).toBeTruthy();
   });
 

@@ -9,9 +9,9 @@ Different versions of `ngx-crud-forms` are compatible with different versions of
 
 ngx-crud-forms       | Angular
 ---------------------|--------
-v1.x.x <br /> v2.x.x | v7.x.x <br /> v8.x.x
-v3.x.x               | v9.x.x <br /> v10.x.x <br /> v11.x.x
-v4.x.x               | v12.x.x
+v1.x.x, v2.x.x       | 7, 8
+v3.x.x               | 9, 10, 11
+v4.x.x               | 12
 
 ## Installing the library
 To use ``ngx-crud-forms``, you should import CSS files from other modules to your project.

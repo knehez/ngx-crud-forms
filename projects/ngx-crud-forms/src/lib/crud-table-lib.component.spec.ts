@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CrudTableLibComponent } from './crud-table-lib.component';
 import { GeneralRestService } from './general-rest.service';
@@ -8,46 +8,46 @@ import { ConfirmationService } from 'primeng/api';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { ModalFormComponent } from './modal-form/modal-form.component';
 import { ClickStopPropagationDirective } from './click-stop-propagation.directive';
 import { ModalImgComponent } from './modal-img/modal-img.component';
 import { Permissions, FormField } from '../decorator/src/public_api';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ModalFormComponent } from './modal-form/modal-form.component';
 
 /* Default data and mock classes */
 
 @Permissions({
-  read:   '*',
-  update: [ 'admin', 'manager' ]
+  read: '*',
+  update: ['admin', 'manager']
 })
 class Product {
 
-  constructor (id?: number, productName?: string) {
+  constructor(id?: number, productName?: string) {
     this.id = id || 0;
     this.productName = productName || '';
   }
 
   @FormField({
-      className: 'TextboxInput',
-      header: 'Id',
-      required: true,
-      type: 'number',
-      order: 1,
-      hidden: true
+    className: 'TextboxInput',
+    header: 'Id',
+    required: true,
+    type: 'number',
+    order: 1,
+    hidden: true
   })
   id: number;
 
   @FormField({
-      className: 'TextboxInput',
-      header: 'Product Name',
-      required: true,
-      type: 'string',
-      order: 2
+    className: 'TextboxInput',
+    header: 'Product Name',
+    required: true,
+    type: 'string',
+    order: 2
   })
   productName: string;
 }
 
-const DEFAULT_PERMISSIONS: any[] = [ 'admin', 'manager', 'viewer' ];
+const DEFAULT_PERMISSIONS: any[] = ['admin', 'manager', 'viewer'];
 const DEFAULT_PRODUCT_STORE = [
   new Product(1, 'rail'),
   new Product(2, 'tension bushing'),
@@ -67,20 +67,20 @@ class GeneralRestServiceMock {
 
   store: Product[] = DEFAULT_PRODUCT_STORE;
 
-  getAll (filter) {
+  getAll(filter) {
     return Promise.resolve(this.store);
   }
 
-  async getAllSync (objectName) {
+  async getAllSync(objectName) {
     return await Promise.resolve(this.store);
   }
 
-  save (obj) {
+  save(obj) {
     this.store.push(obj);
     return Promise.resolve({ success: true });
   }
 
-  update (obj) {
+  update(obj) {
     for (let item of this.store) {
       if (item.id === obj.id) {
         item = obj;
@@ -89,7 +89,7 @@ class GeneralRestServiceMock {
     }
   }
 
-  delete (obj) {
+  delete(obj) {
     return Promise.resolve({ success: true });
   }
 }
@@ -101,7 +101,7 @@ describe('CrudTableLibComponent', () => {
   let fixture: ComponentFixture<CrudTableLibComponent>;
   let generalRestService: GeneralRestService;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         CrudTableLibComponent,
@@ -124,20 +124,20 @@ describe('CrudTableLibComponent', () => {
         ConfirmationService
       ]
     })
-    .overrideComponent(CrudTableLibComponent, {
-      set: {
-        providers: [
-          {
-            provide: GeneralRestService,
-            useClass: GeneralRestServiceMock
-          },
-          InputService,
-          NgbModal,
-          ConfirmationService
-        ]
-      }
-    })
-    .compileComponents();
+      .overrideComponent(CrudTableLibComponent, {
+        set: {
+          providers: [
+            {
+              provide: GeneralRestService,
+              useClass: GeneralRestServiceMock
+            },
+            InputService,
+            NgbModal,
+            ConfirmationService
+          ]
+        }
+      })
+      .compileComponents();
   }));
 
   beforeEach(async () => {
@@ -146,7 +146,7 @@ describe('CrudTableLibComponent', () => {
 
     component.permissions = DEFAULT_PERMISSIONS;
     component.entityName = DEFAULT_ENTITY_NAME;
-    component.entity = new Product;
+    component.entity = new Product();
     component.itemsPerPage = DEFAULT_ITEMS_PER_PAGE;
     component.filter = DEFAULT_FILTER;
     component.ngOnInit();
@@ -224,14 +224,14 @@ describe('CrudTableLibComponent', () => {
     const productNamesColumns = Array.from(fixture.nativeElement.querySelectorAll('.crud-table-col-content'));
     const productNamesRendered = productNamesColumns.map(col => col['innerText']);
     const expectedProductNames = DEFAULT_PRODUCT_STORE
-                                    .map(product => product.productName)
-                                    .slice(0, DEFAULT_ITEMS_PER_PAGE);
+      .map(product => product.productName)
+      .slice(0, DEFAULT_ITEMS_PER_PAGE);
 
     expect(productNamesRendered).toEqual(expectedProductNames);
   });
 
   it('should open modal on click to Edit button on table row', (done) => {
-    const ngbModalSpy = spyOn(NgbModal.prototype, 'open');
+    const ngbModalSpy = spyOn(NgbModal.prototype, 'open').and.callThrough();
     const editBtn = fixture.nativeElement.querySelector('.crud-table-row-edit-btn');
     editBtn.click();
     fixture.whenStable().then(() => {
@@ -265,7 +265,7 @@ describe('CrudTableLibComponent', () => {
   });
 
   it('should disable Add button when the user is not own the appropriate permission', () => {
-    const permissions = [ 'viewer' ];
+    const permissions = ['viewer'];
     component.permissions = permissions;
     fixture.detectChanges();
 
@@ -274,7 +274,7 @@ describe('CrudTableLibComponent', () => {
   });
 
   it('should disable Edit buttons when the user is not own the appropriate permission', () => {
-    const permissions = [ 'viewer' ];
+    const permissions = ['viewer'];
     component.permissions = permissions;
     fixture.detectChanges();
 
@@ -283,7 +283,7 @@ describe('CrudTableLibComponent', () => {
   });
 
   it('should disable Delete buttons when the user is not own the appropriate permission', () => {
-    const permissions = [ 'viewer' ];
+    const permissions = ['viewer'];
     component.permissions = permissions;
     fixture.detectChanges();
 
