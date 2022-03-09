@@ -12,6 +12,7 @@ ngx-crud-forms       | Angular
 v1.x.x, v2.x.x       | 7, 8
 v3.x.x               | 9, 10, 11
 v4.x.x               | 12
+v5.x.x               | 13
 
 ## Installing the library
 To use ``ngx-crud-forms``, you should import CSS files from other modules to your project.
