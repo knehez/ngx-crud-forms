@@ -1,4 +1,8 @@
 # ngx-crud-forms
+[![Build Status](https://github.com/knehez/ngx-crud-forms/actions/workflows/main.yml/badge.svg)](https://github.com/knehez/ngx-crud-forms/actions/workflows/main.yml)
+[![npm version](http://img.shields.io/npm/v/ngx-crud-forms.svg?style=flat)](https://npmjs.org/package/ngx-crud-forms "View this project on npm")
+[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+
 ``ngx-crud-forms`` is an Angular module, which creates UI elements directly from your business objects.
 The module performs client-side authorization tasks too.
 

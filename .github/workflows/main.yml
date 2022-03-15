@@ -1,4 +1,4 @@
-name: Test
+name: test
 
 on: [ 'push', 'pull_request', 'workflow_dispatch' ]
 
@@ -25,19 +25,30 @@ jobs:
         run: npm install -g @angular/cli
 
       - name: Install project dependencies
-        run: npm ci --force
+        run: npm install --force
       
       - name: Install library dependencies
-        run: cd projects/ngx-crud-forms && npm ci --force
+        run: cd projects/ngx-crud-forms && npm install --force
 
-      - name: Build ngx-crud-forms
-        run: cd ../.. && ng build ngx-crud-forms
-      
-      - name: Create local link to ngx-crud-forms
-        run: cd dist/ngx-crud-forms && npm link
+      - name: Run specs, measure coverage
+        run: npm run test -- ngx-crud-forms --browsers ChromeHeadless --watch false --code-coverage
 
-      - name: Link ngx-crud-forms to wrapper project
-        run: cd ../.. && npm link ngx-crud-forms 
+      - name: Register coverage report
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ github.token }}
+          flag-name: Node ${{ matrix.node_version }}_${{ matrix.architecture }} on ${{ matrix.os }}
+          parallel: true
 
-      - name: Run specs
-        run: npm run test -- ngx-crud-forms --browsers ChromeHeadless --watch false
+  report-coverage:
+    name: Summarize and report coverage
+
+    needs: test
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Report coverage
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ github.token }}
+        parallel-finished: true
