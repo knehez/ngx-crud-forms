@@ -25,10 +25,19 @@ jobs:
         run: npm install -g @angular/cli
 
       - name: Install project dependencies
-        run: npm ci
+        run: npm ci --force
       
       - name: Install library dependencies
-        run: cd projects/ngx-crud-forms && npm install
+        run: cd projects/ngx-crud-forms && npm ci --force
+
+      - name: Build ngx-crud-forms
+        run: cd ../.. && ng build ngx-crud-forms
+      
+      - name: Create local link to ngx-crud-forms
+        run: cd dist/ngx-crud-forms && npm link
+
+      - name: Link ngx-crud-forms to wrapper project
+        run: cd ../.. && npm link ngx-crud-forms 
 
       - name: Run specs
         run: npm run test -- ngx-crud-forms --browsers ChromeHeadless --watch false
