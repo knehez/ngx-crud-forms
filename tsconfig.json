@@ -24,6 +24,9 @@
       ],
       "ngx-crud-forms/*": [
         "dist/ngx-crud-forms/*"
+      ],
+      "@angular/*": [
+        "node_modules/@angular/*"
       ]
     }
   }
