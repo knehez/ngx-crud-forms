@@ -11,22 +11,23 @@ The module performs client-side authorization tasks too.
 ## Compatibility
 Different versions of `ngx-crud-forms` are compatible with different versions of the Angular framework. The following table shows the compatibility relations.
 
-ngx-crud-forms       | Angular
----------------------|--------
-v1.x.x, v2.x.x       | 7, 8
-v3.x.x               | 9, 10, 11
-v4.x.x               | 12
-v5.x.x               | 13
+| ngx-crud-forms | Bootstrap | Angular   |
+| -------------- | --------- | ----------|
+| 1.x, 2.x       | 4.x       | 7, 8      |
+| 3.x            | 4.x       | 9, 10, 11 |
+| 4.x            | 4.x       | 12        |
+| 5.x            | 4.x       | 13        |
+| 6.x            | 5.x       | 14        |
 
 ## Installing the library
 To use ``ngx-crud-forms``, you should import CSS files from other modules to your project.
 
-1) Run the following command: ``npm install --save bootstrap@4.5.0 primeng primeicons @ng-select/ng-select``
+1) Run the following command: ``npm install --save bootstrap primeng primeicons @ng-select/ng-select``
 
 2) In your `angular.json` copy the following lines to the `styles` property of your project:
 
     ```ts
-    "node_modules/bootstrap/dist/css/bootstrap.css",
+    "node_modules/bootstrap/dist/css/bootstrap.min.css",
     "node_modules/primeng/resources/themes/nova/theme.css",
     "node_modules/primeng/resources/primeng.min.css",
     "node_modules/primeicons/primeicons.css",
