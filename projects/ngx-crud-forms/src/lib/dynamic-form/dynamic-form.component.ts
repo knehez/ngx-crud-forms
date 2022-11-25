@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { InputBase } from './form-elements/inputBase';
 import { InputControlService } from './inputControl.service';
 
@@ -13,7 +13,7 @@ export class DynamicFormComponent implements OnInit {
     @Input() isNewModel: boolean = false;
     @Input() inputs: InputBase<any>[] = [];
     @Output() saved = new EventEmitter<boolean>();
-    form: FormGroup;
+    form: UntypedFormGroup;
 
     constructor(private qcs: InputControlService) { }
 

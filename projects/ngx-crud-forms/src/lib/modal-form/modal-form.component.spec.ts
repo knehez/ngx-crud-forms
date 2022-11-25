@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModalFormComponent } from './modal-form.component';
 import { DynamicFormComponent } from '../dynamic-form/dynamic-form.component';
-import { FormsModule, ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { DynamicFormInputComponent } from '../dynamic-form/dynamic-form-input.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CalendarModule } from 'primeng/calendar';
@@ -100,7 +100,7 @@ describe('ModalFormComponent', () => {
   it('should render dynamic form to modal body', () => {
     const textareaInput = new TextareaInput({ key: 'test1', value: 'test' });
     component.formElements = [ textareaInput ];
-    component.formComponent.form = new FormGroup({ test1: new FormControl() });
+    component.formComponent.form = new UntypedFormGroup({ test1: new UntypedFormControl() });
     fixture.detectChanges();
 
     const modalBody = fixture.nativeElement.querySelector('.modal-body');
