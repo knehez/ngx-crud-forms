@@ -22,7 +22,7 @@ Different versions of `ngx-crud-forms` are compatible with different versions of
 ## Installing the library
 To use ``ngx-crud-forms``, you should import CSS files from other modules to your project.
 
-1) Run the following command: ``npm install --save bootstrap primeng primeicons @ng-select/ng-select``
+1) Run the following command: ``npm install --save bootstrap @popperjs/core primeng primeicons @ng-select/ng-select``
 
 2) In your `angular.json` copy the following lines to the `styles` property of your project:
 
