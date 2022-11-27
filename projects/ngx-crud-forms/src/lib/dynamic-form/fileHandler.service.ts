@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 
 
 @Injectable({
@@ -7,7 +7,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class FileHandlerService {
 
-  public onFileChange(event, form: FormGroup): void {
+  public onFileChange(event, form: UntypedFormGroup): void {
     const fileList: FileList = event.target.files;
     if (fileList.length > 0) {
       const reader = new FileReader();

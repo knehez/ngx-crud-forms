@@ -12,7 +12,7 @@ export class InputBase<T> {
     order: number;
     controlType: string;
     type: string;
-    style: string;
+    style: { [klass: string]: any; };
     hidden: boolean;
     hideOnCreate: boolean;
     editable: boolean;
@@ -31,7 +31,7 @@ export class InputBase<T> {
         order?: number,
         controlType?: string,
         type?: string,
-        style?: string;
+        style?: { [klass: string]: any; };
         hidden?: boolean,
         hideOnCreate?: boolean,
         editable?: boolean,
@@ -49,7 +49,7 @@ export class InputBase<T> {
         this.required = !!options.required;
         this.order = options.order === undefined ? 1 : options.order;
         this.type = options.type || 'text';
-        this.style = options.style || '';
+        this.style = options.style || {};
         this.hidden = options.hidden || false;
         this.hideOnCreate = options.hideOnCreate || false;
         this.editable = options.editable !== false;

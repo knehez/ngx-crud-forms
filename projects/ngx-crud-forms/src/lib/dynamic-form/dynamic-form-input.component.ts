@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { InputBase } from './form-elements/inputBase';
 import { FileHandlerService } from './fileHandler.service';
 import { TextboxInput } from './form-elements/textBox';
@@ -12,7 +12,7 @@ import { TextboxInput } from './form-elements/textBox';
 export class DynamicFormInputComponent {
     @Input() isNewModel: boolean = false;
     @Input() input: InputBase<any> = new TextboxInput({ key: 'default' });
-    @Input() form: FormGroup = new FormGroup({ default: new FormControl() });
+    @Input() form: UntypedFormGroup = new UntypedFormGroup({ default: new UntypedFormControl() });
 
     get isValid() {
         if (this.input.hidden || this.input.hideOnCreate && this.isNewModel) {

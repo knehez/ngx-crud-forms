@@ -22,16 +22,17 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "@angular/common": "^13.0.0",
-    "@angular/core": "^13.0.0"
+    "@angular/common": "^14.2.12",
+    "@angular/core": "^14.2.12"
   },
   "dependencies": {
-    "@ng-bootstrap/ng-bootstrap": "^11.0.0",
-    "@ng-select/ng-select": "^8.1.1",
-    "file-saver": "2.0.2",
-    "moment": "2.29.2",
-    "primeng": "^13.2.1",
+    "@ng-bootstrap/ng-bootstrap": "13.1.1",
+    "@ng-select/ng-select": "9.1.0",
+    "file-saver": "2.0.5",
+    "moment": "2.29.4",
+    "@popperjs/core": "2.11.6",
+    "primeng": "14.2.2",
     "reflect-metadata": "0.1.13",
-    "tslib": "^2.0.0"
+    "tslib": "2.0.0"
   }
 }

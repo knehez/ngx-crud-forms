@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DynamicFormInputComponent } from './dynamic-form-input.component';
-import { ReactiveFormsModule, FormsModule, FormControl, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { FileHandlerService } from './fileHandler.service';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CalendarModule } from 'primeng/calendar';
@@ -41,7 +41,7 @@ describe('DynamicFormInputComponent', () => {
 
   function testIfControlElementIsExists (formElementConstructor, formControlSelector, constructorOptions?) {
     component.input = new formElementConstructor(constructorOptions || { key: 'test' });
-    component.form = new FormGroup({ test: new FormControl() });
+    component.form = new UntypedFormGroup({ test: new UntypedFormControl() });
     fixture.detectChanges();
 
     const control = fixture.nativeElement.querySelector(formControlSelector);
@@ -55,7 +55,7 @@ describe('DynamicFormInputComponent', () => {
   it('should render input header to label text', () => {
     const expectedHeader = 'Test header';
     component.input = new TextareaInput({ key: 'test', header: expectedHeader });
-    component.form = new FormGroup({ test: new FormControl() });
+    component.form = new UntypedFormGroup({ test: new UntypedFormControl() });
     fixture.detectChanges();
 
     const label = fixture.nativeElement.querySelector('label');
@@ -88,7 +88,7 @@ describe('DynamicFormInputComponent', () => {
 
   it('should render not hidden inputs', () => {
     component.input = new TextareaInput({ key: 'test', hidden: false });
-    component.form = new FormGroup({ test: new FormControl() });
+    component.form = new UntypedFormGroup({ test: new UntypedFormControl() });
     fixture.detectChanges();
 
     const input = fixture.nativeElement.querySelector('.dynamic-form-input');
@@ -98,7 +98,7 @@ describe('DynamicFormInputComponent', () => {
 
   it('should not render hidden inputs', () => {
     component.input = new TextareaInput({ key: 'test', hidden: true });
-    component.form = new FormGroup({ test: new FormControl() });
+    component.form = new UntypedFormGroup({ test: new UntypedFormControl() });
     fixture.detectChanges();
 
     const input = fixture.nativeElement.querySelector('.dynamic-form-input');
