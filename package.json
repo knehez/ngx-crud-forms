@@ -24,7 +24,6 @@
     "@angular/router": "^14.2.12",
     "@ng-bootstrap/ng-bootstrap": "13.1.1",
     "@ng-select/ng-select": "9.1.0",
-    "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
     "core-js": "^2.5.4",
     "ngx-crud-forms": "file:dist/ngx-crud-forms",
