@@ -64,7 +64,7 @@ describe('DynamicFormComponent', () => {
 
     fixture.detectChanges();
 
-    const inputs = fixture.debugElement.queryAll(By.css('.form-row'));
+    const inputs = fixture.debugElement.queryAll(By.css('.dynamic-form-row'));
     expect(inputs[0].nativeElement.querySelector('textarea')).toBeTruthy();
     expect(inputs[1].nativeElement.querySelector('input')).toBeTruthy();
   });

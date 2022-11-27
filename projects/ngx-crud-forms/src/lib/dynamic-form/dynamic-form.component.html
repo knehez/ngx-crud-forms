@@ -1,5 +1,5 @@
 <div [formGroup]="form">
-    <div *ngFor="let input of inputs" class="form-row">
+    <div *ngFor="let input of inputs" class="row dynamic-form-row">
         <lib-input [input]="input" [form]="form" [isNewModel]="isNewModel" class="w-100"></lib-input>
     </div>
 </div>
